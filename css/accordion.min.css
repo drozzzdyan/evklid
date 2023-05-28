@@ -1,0 +1,216 @@
+@charset "UTF-8";
+/**
+ * Accordion v3.3.2
+ * Lightweight and accessible accordion module created in pure Javascript
+ * https://github.com/michu2k/Accordion
+ *
+ * Copyright (c) Michał Strumpf
+ * Published under MIT License
+ */
+
+.ac {
+  position: relative;
+  border-top: 1px solid #cacaca;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.ac:last-child {
+  border-bottom: 1px solid #cacaca;
+}
+
+.ac .ac-header {
+  margin: 0;
+  padding: 0;
+  color: var(--main-black-color);
+}
+
+.ac .ac-trigger {
+  position: relative;
+  margin: 0;
+  border: 0;
+  width: 100%;
+  padding: 39px 50px 39px 0;
+  display: block;
+  cursor: pointer;
+  background-color: transparent;
+  transition: color .25s ease;
+  text-decoration: none;
+  text-align: left;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  outline: none;
+  color: inherit;
+}
+
+.ac-trigger:-moz-focusring {
+  outline: none;
+}
+
+h2:-moz-focusring {
+  outline: none;
+}
+
+.ac::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: transparent;
+  z-index: 100;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.ac::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: transparent;
+  z-index: 100;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.ac-header {
+  position: relative;
+  color: var(--main-black-color);
+}
+
+.ac-icon {
+  position: absolute;
+  right: 0;
+  top: calc(50% - 25px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.ac-icon ellipse {
+  transition: fill 0.3s ease-in-out;
+}
+
+.ac-icon path {
+  transition: fill 0.3s ease-in-out;
+}
+
+.ac .ac-trigger:focus {
+  color: #ff9900;
+}
+
+.ac .ac-trigger:focus .ac-icon ellipse {
+  fill: #ff9900
+}
+
+.ac .ac-trigger:focus .ac-icon path {
+  fill: #fff
+}
+
+.ac:hover::before {
+  background-color: #ff9900;
+}
+
+.ac:hover::after {
+  background-color: #ff9900;
+}
+
+.ac .ac-trigger:hover {
+  color: #ff9900
+}
+
+.ac .ac-trigger:hover .ac-icon ellipse {
+  fill: #ff9900
+}
+
+.ac .ac-trigger:hover .ac-icon path {
+  fill: #fff
+}
+
+.ac .ac-panel {
+  overflow: hidden;
+  transition-property: height, visibility;
+  transition-timing-function: ease
+}
+
+.ac .ac-panel .ac-text {
+  padding-right: 767px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+}
+
+.ac .ac-panel .ac-text:not(:last-child) {
+  margin-bottom: 32px;
+}
+
+.ac .ac-panel .ac-text:last-child {
+  margin-bottom: 40px;
+}
+
+.ac.js-enabled .ac-panel {
+  visibility: hidden
+}
+
+.ac.is-active .ac-panel {
+  visibility: visible
+}
+
+.ac.is-active .ac-icon {
+  transform: rotate(45deg);
+}
+
+/* Адаптив */
+
+@media (max-width: 1440px) {
+  .ac .ac-trigger {
+    font-size: 20px;
+  }
+
+  .ac:nth-child(2) .ac-trigger,
+  .ac:nth-child(4) .ac-trigger {
+    padding: 30px 150px 30px 0;
+  }
+
+  .ac .ac-panel .ac-text {
+    padding-right: 100px;
+  }
+}
+
+@media (max-width: 992px) {
+
+  .ac:nth-child(3) .ac-trigger,
+  .ac:nth-child(5) .ac-trigger {
+    padding: 30px 150px 30px 0;
+  }
+
+  .ac .ac-panel .ac-text {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .ac:nth-child(n) .ac-trigger {
+    padding: 30px 50px 30px 0;
+  }
+
+  .ac .ac-trigger {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .ac-icon {
+    top: calc(50% - 15px);
+    height: 30px;
+    width: 30px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .ac .ac-panel .ac-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 28px;
+  }
+}
